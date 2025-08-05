@@ -14,21 +14,6 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-data "aws_vpc" "example" {
-  filter {
-    name   = "tag:Name"
-    values = ["myvpc"] # Replace with the name of your VPC
-  }
-}
-
-# (Information not from sources: This block would retrieve a subnet within that VPC)
-data "aws_subnet" "example" {
-  vpc_id = data.aws_vpc.example.id
-  filter {
-    name   = "tag:Name"
-    values = ["sn7d"] # Replace with the name of your desired subnet
-  }
-}
 
 
 resource "aws_instance" "web" {
