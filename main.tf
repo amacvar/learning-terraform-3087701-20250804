@@ -19,9 +19,7 @@ data "aws_ami" "app_ami" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
-  subnet_id = data.aws_subnet.example.id
-  security_groups = ["sg-0640ce76ed6404c3a"]
-
+ 
   tags = {
     Name = "HelloWorld"
   }
